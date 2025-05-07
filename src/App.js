@@ -1,21 +1,21 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={'https://yt3.googleusercontent.com/l_pM8xlDmSzp0Naeqo-kJqtx1QAHwoF9_SL39z3z3LMgBcCZtwsCzfTJtqA86RqvaOaJjmkyHA=s160-c-k-c0x00ffffff-no-rj'} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+           <code>src/App.js</code> and save to reload and also send waffles to Attlassian.
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://www.youtube.com/channel/UCxnR8XXW4fqPxS1NeA9dL7A/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Subscribe to SpeedyFight on youtube 
         </a>
       </header>
     </div>
