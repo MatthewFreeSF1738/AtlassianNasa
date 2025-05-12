@@ -1,3 +1,15 @@
+
+# Introduction
+
+Hello This project's goal is to make a search website using the Nasa servers to make a an UI to go and show pictures
+taken by NASA's Rovers
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
