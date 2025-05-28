@@ -63,8 +63,8 @@ function App() {
           handleChange={handleRoverCameraChange}
         />
         <p>
-          Rover Cameras: FHAZ, RHAZ, MAST, CHEMCAM, MAHLI, MARDI, NAVCAM,
-          PANCAM, MINITES
+          Rover Cameras: FHAZ (Front) , RHAZ (Rear) , MAST, CHEMCAM(chemical), MAHLI, MARDI, NAVCAM (Navigational),
+          PANCAM(panoramic), MINITES
         </p>
         <SearchBar
           label={"Photo Date"}
