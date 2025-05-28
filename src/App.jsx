@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 import "./App.css";
 import SearchBar from "./components/searchbar";
 
@@ -10,7 +11,24 @@ function App() {
   const [roverCamera, setRoverCamera] = useState("fhaz");
   const [photoDate, setPhotoDate] = useState("2015-6-3");
 
-  useEffect(() => {
+  const handleRoverNameChange = (e) => {
+    e.preventDefault();
+    setRoverName(e.target.value);
+  };
+
+  const handleRoverCameraChange = (e) => {
+    e.preventDefault();
+    setRoverCamera(e.target.value);
+  };
+
+  const handlePhotoDateChange = (e) => {
+    e.preventDefault();
+    setPhotoDate(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     let apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName}/photos?sol=1000&api_key=${API_KEY}`;
 
     if (roverCamera) {
@@ -24,33 +42,56 @@ function App() {
     fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, [roverName, roverCamera, photoDate]);
+  };
+
   return (
-    <div className="App">
-      <div classname="App">
-        <SearchBar />
+    <div>
+      <div className="header">
+        <h1>Mars Rovers</h1>
+        <p>Welcome to our app!</p>
       </div>
-      <header className="App-header">
-        <img
-          src={
-            "https://yt3.googleusercontent.com/l_pM8xlDmSzp0Naeqo-kJqtx1QAHwoF9_SL39z3z3LMgBcCZtwsCzfTJtqA86RqvaOaJjmkyHA=s160-c-k-c0x00ffffff-no-rj"
-          }
-          className="App-logo"
-          alt="logo"
+      <div className="form-container">
+        <SearchBar
+          label={"Rover Name"}
+          value={roverName}
+          handleChange={handleRoverNameChange}
+        />
+        <p>Possible Rovers: Curiosity, Opportunity, Spirit</p>
+        <SearchBar
+          label={"Rover Camera"}
+          value={roverCamera}
+          handleChange={handleRoverCameraChange}
         />
         <p>
-          <code>src/App.jsx</code> save 2 show new stuff
+          Rover Cameras: FHAZ, RHAZ, MAST, CHEMCAM, MAHLI, MARDI, NAVCAM,
+          PANCAM, MINITES
         </p>
-        <a
-          className="App-link"
-          href="https://www.youtube.com/channel/UCxnR8XXW4fqPxS1NeA9dL7A/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          This is a cool project for rovers
-        </a>
-      </header>
-      
+        <SearchBar
+          label={"Photo Date"}
+          value={photoDate}
+          handleChange={handlePhotoDateChange}
+        />
+        <p>Date must be in YYYY-MM-DD format</p>
+        <div className="submit-button-container">
+          <button onClick={handleSubmit} className="submit-button">
+            Submit
+          </button>
+        </div>
+      </div>
+
+      {data && data.photos && (
+        <div className="photos-container">
+          <p>{data.photos.length} photos found</p>
+          {data.photos.map((photo) => (
+            <img
+              src={photo.img_src}
+              alt="Mars"
+              key={photo.id}
+              className="photo-image"
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
