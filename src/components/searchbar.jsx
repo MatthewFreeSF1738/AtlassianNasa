@@ -8,7 +8,7 @@ const searchBar = () => {
 
   return <input
    type="text"
-   placeholder="Search rovers here"
+   placeholder="Search the universe here!"
    onChange={handleChange}
    value={searchInput} />
 
